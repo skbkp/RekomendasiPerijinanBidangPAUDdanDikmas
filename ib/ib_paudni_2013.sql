@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 10, 2013 at 10:51 AM
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Inang: 127.0.0.1
+-- Waktu pembuatan: 27 Okt 2015 pada 18.19
+-- Versi Server: 5.5.27
+-- Versi PHP: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,13 +17,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `ib`
+-- Basis data: `ib_paudni_2013`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `authassignment`
+-- Struktur dari tabel `authassignment`
 --
 
 CREATE TABLE IF NOT EXISTS `authassignment` (
@@ -34,20 +35,16 @@ CREATE TABLE IF NOT EXISTS `authassignment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `authassignment`
+-- Dumping data untuk tabel `authassignment`
 --
 
 INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
-('Admin', '1', NULL, 'N;'),
-('Authenticated', '27', NULL, 'N;'),
-('Authenticated', '47', NULL, 'N;'),
-('Authenticated', '7', NULL, 'N;'),
-('Guest', '2', NULL, 'N;');
+('Admin', '1', NULL, 'N;');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `authitem`
+-- Struktur dari tabel `authitem`
 --
 
 CREATE TABLE IF NOT EXISTS `authitem` (
@@ -60,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `authitem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `authitem`
+-- Dumping data untuk tabel `authitem`
 --
 
 INSERT INTO `authitem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
@@ -71,7 +68,7 @@ INSERT INTO `authitem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `authitemchild`
+-- Struktur dari tabel `authitemchild`
 --
 
 CREATE TABLE IF NOT EXISTS `authitemchild` (
@@ -81,21 +78,221 @@ CREATE TABLE IF NOT EXISTS `authitemchild` (
   KEY `child` (`child`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `authitemchild`
+-- Struktur dari tabel `ib_imta`
 --
 
+CREATE TABLE IF NOT EXISTS `ib_imta` (
+  `ib_imta_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `ib_imta_peserta_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_nilek` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_peserta_jk` int(11) NOT NULL,
+  `ib_imta_peserta_tmplahir` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_peserta_tgllahir` date NOT NULL,
+  `ib_imta_peserta_negara` int(11) NOT NULL,
+  `ib_imta_peserta_pasport` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_peserta_pasport_start` date NOT NULL,
+  `ib_imta_peserta_pasport_exp` date NOT NULL,
+  `ib_imta_peserta_alamat_ln` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_peserta_alamat_id` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_peserta_pendidikan` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_peserta_jurusanpendidikan` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_peserta_prop_id` int(11) NOT NULL,
+  `ib_imta_peserta_kabkot_id` int(11) NOT NULL,
+  `ib_imta_lbg_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_lbg_alamat` varchar(300) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_lbg_prop_id` int(11) NOT NULL,
+  `ib_imta_lbg_kabkot_id` int(11) NOT NULL,
+  `ib_imta_lbg_kodepos` int(11) NOT NULL,
+  `ib_imta_lbg_tlp` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_lbg_fax` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_lbg_jenislembaga` int(1) NOT NULL,
+  `ib_imta_lbg_ijin_oleh` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_imta_lbg_ijin_oleh_name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `ib_imta_lbg_ijin_no` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `ib_imta_lbg_ijin_tgl` date NOT NULL,
+  `ib_imta_lbg_ijin_start` date NOT NULL,
+  `ib_imta_lbg_ijin_exp` date NOT NULL,
+  `ib_imta_peserta_nosurat` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `ib_imta_peserta_tglsurat` date NOT NULL,
+  `ib_imta_jenis_kursus` int(3) NOT NULL,
+  `ib_imta_jenis_imta` int(3) NOT NULL,
+  `ib_imta_peserta_nosurat_rptka` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `ib_imta_peserta_tglsurat_rptka` date NOT NULL,
+  `ib_imta_jumlah_rptka` int(11) NOT NULL,
+  `ib_imta_jenisjabatan_ptka` int(3) NOT NULL,
+  `ib_imta_kadaluarsa_rptka` datetime NOT NULL,
+  `ib_imta_create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ib_imta_update_at` datetime NOT NULL,
+  `ib_imta_update_by` int(11) NOT NULL,
+  `ib_imta_status` int(11) NOT NULL,
+  `ib_imta_jatuh_tempo` date NOT NULL,
+  `status_perpanjangan` char(1) NOT NULL DEFAULT 'N',
+  PRIMARY KEY (`ib_imta_id`),
+  KEY `user_id` (`user_id`),
+  KEY `ib_imta_peserta_negara` (`ib_imta_peserta_negara`),
+  KEY `ib_imta_peserta_kabkot_id` (`ib_imta_peserta_kabkot_id`),
+  KEY `ib_imta_peserta_prop_id` (`ib_imta_peserta_prop_id`),
+  KEY `ib_imta_lbg_prop_id` (`ib_imta_lbg_prop_id`),
+  KEY `ib_imta_lbg_kabkot_id` (`ib_imta_lbg_kabkot_id`),
+  KEY `ib_imta_lbg_jenislembaga` (`ib_imta_lbg_jenislembaga`),
+  KEY `ib_imta_peserta_jk` (`ib_imta_peserta_jk`),
+  KEY `ib_imta_jenis_kursus` (`ib_imta_jenis_kursus`),
+  KEY `ib_imta_jenis_imta` (`ib_imta_jenis_imta`),
+  KEY `ib_imta_jenisjabatan_ptka` (`ib_imta_jenisjabatan_ptka`),
+  KEY `ib_imta_update_by` (`ib_imta_update_by`),
+  KEY `ib_imta_status` (`ib_imta_status`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `ib_imta`
+--
+
+INSERT INTO `ib_imta` (`ib_imta_id`, `user_id`, `ib_imta_peserta_name`, `ib_imta_nilek`, `ib_imta_peserta_jk`, `ib_imta_peserta_tmplahir`, `ib_imta_peserta_tgllahir`, `ib_imta_peserta_negara`, `ib_imta_peserta_pasport`, `ib_imta_peserta_pasport_start`, `ib_imta_peserta_pasport_exp`, `ib_imta_peserta_alamat_ln`, `ib_imta_peserta_alamat_id`, `ib_imta_peserta_pendidikan`, `ib_imta_peserta_jurusanpendidikan`, `ib_imta_peserta_prop_id`, `ib_imta_peserta_kabkot_id`, `ib_imta_lbg_name`, `ib_imta_lbg_alamat`, `ib_imta_lbg_prop_id`, `ib_imta_lbg_kabkot_id`, `ib_imta_lbg_kodepos`, `ib_imta_lbg_tlp`, `ib_imta_lbg_fax`, `ib_imta_lbg_jenislembaga`, `ib_imta_lbg_ijin_oleh`, `ib_imta_lbg_ijin_oleh_name`, `ib_imta_lbg_ijin_no`, `ib_imta_lbg_ijin_tgl`, `ib_imta_lbg_ijin_start`, `ib_imta_lbg_ijin_exp`, `ib_imta_peserta_nosurat`, `ib_imta_peserta_tglsurat`, `ib_imta_jenis_kursus`, `ib_imta_jenis_imta`, `ib_imta_peserta_nosurat_rptka`, `ib_imta_peserta_tglsurat_rptka`, `ib_imta_jumlah_rptka`, `ib_imta_jenisjabatan_ptka`, `ib_imta_kadaluarsa_rptka`, `ib_imta_create_at`, `ib_imta_update_at`, `ib_imta_update_by`, `ib_imta_status`, `ib_imta_jatuh_tempo`, `status_perpanjangan`) VALUES
+(1, 27, 'Nurdien M Top', '566894923', 0, 'Cikarang', '2015-09-29', 627, '76578768765876', '2015-09-29', '2015-10-05', 'Sao Paulo', 'Cikarang', 'S1', 'Teknik Informatika', 32, 3216, 'PT. Tripad Solution', 'Bekasi', 32, 3216, 76858765, '987098709868756', '654365436546', 4, 'Kepala', 'Dinas Pendidikan Pemerintah Kota Surabaya', '65657547654765', '2015-09-29', '2015-09-29', '2016-09-29', '566765476547654', '2015-09-29', 31, 1, '5476547653765/dfaafhiuda', '2015-09-29', 2147483647, 2, '2015-09-29 00:00:00', '2015-09-29 03:38:42', '2015-10-18 16:53:01', 27, 67, '2015-10-18', 'N'),
+(3, 27, 'Kurniawan', '65765476547654', 0, 'Kalimantan Tengah', '1980-10-18', 347, '654876867876587', '2015-10-18', '2016-10-18', 'Bahrain City', 'Kalimantan Tengah', 'Goods', 'Manajemen Bisnis', 72, 7207, 'Universitas Bisnis Indonesia', 'Jakarta', 31, 3173, 2147483647, '98769876987', '87687658765', 3, 'Kepala', 'Dinas Pendidikan Pemerintah Kota Bandung', '67576487568756', '2015-10-18', '2015-10-18', '2016-10-18', '657547653765', '2015-10-18', 1, 1, '45265454642', '2015-10-18', 4, 1, '2016-10-18 00:00:00', '2015-10-18 10:04:39', '2015-10-18 17:04:39', 1, 27, '0000-00-00', 'N');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_kursus`
+-- Struktur dari tabel `ib_imta_upload`
+--
+
+CREATE TABLE IF NOT EXISTS `ib_imta_upload` (
+  `upload_id` int(11) NOT NULL AUTO_INCREMENT,
+  `imta_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `upload_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  `update_by` int(11) NOT NULL,
+  `file_surat` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_kuasa` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_nilek` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_kurikulum` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_aktanotaris` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_pengesahankumham` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_domisili` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_skrptka` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_ijinoperasional` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_rekapsiswadanptk` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_rekomendasidinas` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_alasan` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_jaminan` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_paspor` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_cv` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_foto` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_ijazah` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_sehat` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_pernyataan` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_stm` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_kitas` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_rekom` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_imtakemnaker` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_suratkontakkerja` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_hasilpenilaianijazah` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `file_laporankegiatanproses` varchar(500) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`upload_id`),
+  UNIQUE KEY `imta_id` (`imta_id`),
+  KEY `user_id` (`user_id`),
+  KEY `update_by` (`update_by`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `ib_imta_upload`
+--
+
+INSERT INTO `ib_imta_upload` (`upload_id`, `imta_id`, `user_id`, `upload_at`, `update_at`, `update_by`, `file_surat`, `file_kuasa`, `file_nilek`, `file_kurikulum`, `file_aktanotaris`, `file_pengesahankumham`, `file_domisili`, `file_skrptka`, `file_ijinoperasional`, `file_rekapsiswadanptk`, `file_rekomendasidinas`, `file_alasan`, `file_jaminan`, `file_paspor`, `file_cv`, `file_foto`, `file_ijazah`, `file_sehat`, `file_pernyataan`, `file_stm`, `file_kitas`, `file_rekom`, `file_imtakemnaker`, `file_suratkontakkerja`, `file_hasilpenilaianijazah`, `file_laporankegiatanproses`) VALUES
+(1, 1, 27, '2015-10-01 00:17:46', '2015-10-01 00:17:46', 27, '1508BDGJF-Lulus-Adm-Masuk-AKDING-Pengumuman_v2.pdf', 'DATA DIRI_peserta tes.pdf', 'DetailSellingPrice (1).pdf', 'DetailSellingPrice (2).pdf', 'DetailSellingPrice.pdf', 'GeneralAccountingReports (1).pdf', 'GeneralAccountingReports (2).pdf', 'GeneralAccountingReports (3).pdf', 'GeneralAccountingReportsPDF.jrxml.pdf', 'GeneralAccountingReports.pdf', 'DATA DIRI_peserta tes.pdf', 'invoice_S-00.70.15.01630.1.13.01.0.pdf', 'Report (1).pdf', 'Report (2).pdf', 'Report (3).pdf', '10959262_314919142052702_1149812423_n.jpg', 'Reversed_Sales_Invoice_PDT.FI.RSI1000007.20150608-155502.pdf', 'Sales_Invoice_I_14.20150608-161114.pdf', 'Sales_Quotation_1000000.20150428-082230.pdf', '', '', '', '', '', '', ''),
+(3, 3, 27, '2015-10-18 17:21:56', '2015-10-18 17:21:56', 27, '1508BDGJF-Lulus-Adm-Masuk-AKDING-Pengumuman_v2.pdf', 'DATA DIRI_peserta tes.pdf', 'DetailSellingPrice (2).pdf', 'DetailSellingPrice (1).pdf', 'DetailSellingPrice.pdf', 'GeneralAccountingReports (1).pdf', 'GeneralAccountingReports (3).pdf', 'GeneralAccountingReports (2).pdf', 'GeneralAccountingReportsPDF.jrxml.pdf', 'Report (1).pdf', 'invoice_S-00.70.15.01630.1.13.01.0.pdf', 'Report (2).pdf', 'Report (3).pdf', 'Report (6).pdf', 'Sales_Invoice_I_14.20150608-161114.pdf', '10959262_314919142052702_1149812423_n.jpg', 'Reversed_Sales_Invoice_PDT.FI.RSI1000007.20150608-155502.pdf', 'akta lahir.pdf', 'passport anak.pdf', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ib_imta_upload_nilai`
+--
+
+CREATE TABLE IF NOT EXISTS `ib_imta_upload_nilai` (
+  `nilai_imta_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ib_imta_id` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `create_at` datetime NOT NULL,
+  `update_at` datetime NOT NULL,
+  `update_by` int(11) NOT NULL,
+  `v_surat` int(1) NOT NULL,
+  `v_kuasa` int(1) NOT NULL,
+  `v_nilek` int(1) NOT NULL,
+  `v_kurikulum` int(1) NOT NULL,
+  `v_aktanotaris` int(1) NOT NULL,
+  `v_pengesahankumham` int(1) NOT NULL,
+  `v_domisili` int(1) NOT NULL,
+  `v_skrptka` int(1) NOT NULL,
+  `v_ijinoperasional` int(1) NOT NULL,
+  `v_rekapsiswadanptk` int(1) NOT NULL,
+  `v_rekomendasidinas` int(1) NOT NULL,
+  `v_alasan` int(1) NOT NULL,
+  `v_jaminan` int(1) NOT NULL,
+  `v_paspor` int(1) NOT NULL,
+  `v_cv` int(1) NOT NULL,
+  `v_foto` int(1) NOT NULL,
+  `v_ijazah` int(1) NOT NULL,
+  `v_sehat` int(1) NOT NULL,
+  `v_pernyataan` int(1) NOT NULL,
+  `v_stm` int(1) NOT NULL,
+  `v_kitas` int(1) NOT NULL,
+  `v_rekom` int(1) NOT NULL,
+  `v_imtakemnaker` int(1) NOT NULL,
+  `v_suratkontakkerja` int(1) NOT NULL,
+  `v_hasilpenilaianijazah` int(1) NOT NULL,
+  `v_laporankegiatanproses` int(1) NOT NULL,
+  `global_reason` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`nilai_imta_id`),
+  UNIQUE KEY `upload_id` (`ib_imta_id`),
+  KEY `user_id` (`created_by`),
+  KEY `update_by` (`update_by`),
+  KEY `v_surat` (`v_surat`),
+  KEY `v_kuasa` (`v_kuasa`),
+  KEY `v_nilek` (`v_nilek`),
+  KEY `v_kurikulum` (`v_kurikulum`),
+  KEY `v_aktanotaris` (`v_aktanotaris`),
+  KEY `v_pengesahankumham` (`v_pengesahankumham`),
+  KEY `v_domisili` (`v_domisili`),
+  KEY `v_skrptka` (`v_skrptka`),
+  KEY `v_ijinoperasional` (`v_ijinoperasional`),
+  KEY `v_rekapsiswadanptk` (`v_rekapsiswadanptk`),
+  KEY `v_rekomendasidinas` (`v_rekomendasidinas`),
+  KEY `v_alasan` (`v_alasan`),
+  KEY `v_jaminan` (`v_jaminan`),
+  KEY `v_paspor` (`v_paspor`),
+  KEY `v_cv` (`v_cv`),
+  KEY `v_foto` (`v_foto`),
+  KEY `v_ijazah` (`v_ijazah`),
+  KEY `v_sehat` (`v_sehat`),
+  KEY `v_pernyataan` (`v_pernyataan`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `ib_imta_upload_nilai`
+--
+
+INSERT INTO `ib_imta_upload_nilai` (`nilai_imta_id`, `ib_imta_id`, `created_by`, `create_at`, `update_at`, `update_by`, `v_surat`, `v_kuasa`, `v_nilek`, `v_kurikulum`, `v_aktanotaris`, `v_pengesahankumham`, `v_domisili`, `v_skrptka`, `v_ijinoperasional`, `v_rekapsiswadanptk`, `v_rekomendasidinas`, `v_alasan`, `v_jaminan`, `v_paspor`, `v_cv`, `v_foto`, `v_ijazah`, `v_sehat`, `v_pernyataan`, `v_stm`, `v_kitas`, `v_rekom`, `v_imtakemnaker`, `v_suratkontakkerja`, `v_hasilpenilaianijazah`, `v_laporankegiatanproses`, `global_reason`) VALUES
+(1, 1, 27, '2015-09-30 22:58:26', '2015-10-10 21:26:01', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, '<p>Tulis keterangan jika dokumen bermasalah</p>\r\n'),
+(2, 2, 27, '2015-10-18 16:55:35', '2015-10-18 18:49:39', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '<p>Tulis keterangan jika dokumen bermasalah</p>\r\n'),
+(3, 3, 27, '2015-10-18 17:21:56', '2015-10-18 17:21:56', 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Tulis keterangan jika dokumen bermasalah');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ib_kursus`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_kursus` (
   `ib_kursus_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `ib_kursus_peserta_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_kursus_nilek` varchar(50) NOT NULL,
   `ib_kursus_peserta_jk` int(11) NOT NULL,
   `ib_kursus_peserta_tmplahir` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ib_kursus_peserta_tgllahir` date NOT NULL,
@@ -114,6 +311,7 @@ CREATE TABLE IF NOT EXISTS `ib_kursus` (
   `ib_kursus_lbg_kodepos` int(11) NOT NULL,
   `ib_kursus_lbg_tlp` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ib_kursus_lbg_fax` varchar(15) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_kursus_lbg_pemodal` int(1) NOT NULL,
   `ib_kursus_lbg_ijin_oleh` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ib_kursus_lbg_ijin_oleh_name` varchar(50) CHARACTER SET utf8 NOT NULL,
   `ib_kursus_lbg_ijin_no` varchar(100) CHARACTER SET utf8 NOT NULL,
@@ -127,10 +325,13 @@ CREATE TABLE IF NOT EXISTS `ib_kursus` (
   `ib_kursus_peserta_nosurat` varchar(50) CHARACTER SET utf8 NOT NULL,
   `ib_kursus_peserta_tglsurat` date NOT NULL,
   `ib_jeniskursus` int(3) NOT NULL,
+  `ib_kursus_jenis_kursus` int(3) NOT NULL,
   `ib_kursus_create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ib_kursus_update_at` datetime NOT NULL,
   `ib_kursus_update_by` int(11) NOT NULL,
   `ib_kursus_status` int(11) NOT NULL,
+  `ib_kursus_jatuh_tempo` date NOT NULL,
+  `status_perpanjangan` char(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY (`ib_kursus_id`),
   KEY `user_id` (`user_id`),
   KEY `ib_kursus_peserta_negara` (`ib_kursus_peserta_negara`),
@@ -141,24 +342,27 @@ CREATE TABLE IF NOT EXISTS `ib_kursus` (
   KEY `ib_kursus_peserta_jk` (`ib_kursus_peserta_jk`),
   KEY `ib_jeniskursus` (`ib_jeniskursus`),
   KEY `ib_kursus_update_by` (`ib_kursus_update_by`),
-  KEY `ib_kursus_status` (`ib_kursus_status`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
+  KEY `ib_kursus_status` (`ib_kursus_status`),
+  KEY `ib_kursus_lbg_pemodal` (`ib_kursus_lbg_pemodal`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=130 ;
 
 --
--- Dumping data for table `ib_kursus`
+-- Dumping data untuk tabel `ib_kursus`
 --
 
-INSERT INTO `ib_kursus` (`ib_kursus_id`, `user_id`, `ib_kursus_peserta_name`, `ib_kursus_peserta_jk`, `ib_kursus_peserta_tmplahir`, `ib_kursus_peserta_tgllahir`, `ib_kursus_peserta_negara`, `ib_kursus_peserta_pasport`, `ib_kursus_peserta_pasport_start`, `ib_kursus_peserta_pasport_exp`, `ib_kursus_peserta_alamat_ln`, `ib_kursus_peserta_alamat_id`, `ib_kursus_peserta_prop_id`, `ib_kursus_peserta_kabkot_id`, `ib_kursus_lbg_name`, `ib_kursus_lbg_alamat`, `ib_kursus_lbg_prop_id`, `ib_kursus_lbg_kabkot_id`, `ib_kursus_lbg_kodepos`, `ib_kursus_lbg_tlp`, `ib_kursus_lbg_fax`, `ib_kursus_lbg_ijin_oleh`, `ib_kursus_lbg_ijin_oleh_name`, `ib_kursus_lbg_ijin_no`, `ib_kursus_lbg_ijin_tgl`, `ib_kursus_lbg_ijin_start`, `ib_kursus_lbg_ijin_exp`, `ib_kursus_peserta_biaya`, `ib_kursus_peserta_alasan`, `ib_kursus_peserta_jaminan`, `ib_kursus_peserta_pendidikan`, `ib_kursus_peserta_nosurat`, `ib_kursus_peserta_tglsurat`, `ib_jeniskursus`, `ib_kursus_create_at`, `ib_kursus_update_at`, `ib_kursus_update_by`, `ib_kursus_status`) VALUES
-(47, 47, 'Harismo Aji, S.Si', 0, 'Malang', '1980-05-01', 2067, '01.02.03.04', '2012-01-01', '2013-01-01', 'Samhong Street 246A', 'Graha Utama Serpong Blok E, No.8', 11, 1101, 'IMLAC (Indonesia Language Center)', 'Jl. Gajayana No. 21B', 11, 1101, 34534, '3245345', '345345', 'Kepala Dinas Pendidikan Simeulue', 'Prof. Dr. Kartolo, CISA, CEH', 'DP/02001/03/2007', '2007-03-04', '2007-04-03', '2015-04-03', 'Biaya ditanggung sendiri', 'Memahami Bahasa Indonesia', 'Pimpinan Lembaga Kursus IMLAC', 'Malang International School', '34.54/03/2013', '2013-04-25', 8, '2013-04-06 18:04:14', '2013-04-27 23:07:32', 47, 107),
-(67, 7, 'poui', 0, 'puiop', '2000-02-01', 7, 'pou', '2012-01-03', '2013-11-22', 'uiop', 'uiopuiop', 12, 1202, 'dfghdfgh', 'dfghdfgh', 12, 1202, 345345, '345345345', '345345345', '34563456', '', '', '2013-04-16', '2013-04-11', '2013-09-13', 'wetywety', 'ertyrty', 'sdgsdfg', 'sdfgreueryuerty', '', '0000-00-00', 17, '2013-04-08 15:58:50', '2013-04-08 17:51:19', 7, 107),
-(87, 7, 'Eva Fatmawati', 1, 'Cirebon', '1980-01-13', 2067, '1234.98/2009', '2009-01-27', '2014-07-10', 'Wallstreet 34', 'Jl Merdeka 41', 32, 3274, 'Sentosa Mekar Jaya', 'Jl Diponegoro 255', 35, 3579, 65314, '0341-511460', '0341-588578', 'Kepala Dinas Pendidikan Kota Batu', 'Prof. Dr. Zainal Rofi''i, CISA, CEH', '123.65.356', '2010-02-02', '2010-02-27', '2015-03-31', 'Biaya Sendiri', 'Mempelajari Bahasa Jawa', 'Joe Satriani', 'Sarjana Akuntansi', '23.12/asdf.23', '2013-05-01', 11, '2013-04-08 22:37:48', '2013-05-08 15:56:30', 1, 47),
-(107, 47, 'James Bond', 0, 'New York', '1970-02-04', 4707, '234-78678', '2011-02-01', '2014-04-04', 'asdfffd', 'asdfasdf', 34, 3402, 'fsadfasdf', 'asdfasdf', 34, 3471, 2343, '4554543', 'ddfgdsf', 'asdfasdf', '', '', '2010-02-02', '2010-03-01', '2015-04-04', 'asdfdas', 'gdgdfsg', 'adsfgasf', 'asdfgasfdg', '', '0000-00-00', 8, '2013-04-19 18:33:24', '2013-05-08 15:56:33', 47, 47),
-(127, 47, 'Julia Perez', 1, 'Sydney', '2008-02-01', 267, '123-345435', '2011-02-05', '2013-12-13', 'abdabaf', 'ioykjghkghj', 19, 1901, 'ewtre', 'dfgsdfgdf', 19, 1901, 23432, 'asdfasd', 'asdfasdf', 'asdfasdf', '', '', '2010-02-12', '2010-02-12', '2013-12-13', 'asdfasdf', 'asdfasdf', 'asdfasdfasdf', 'asdfasdfasdhsdg', '', '0000-00-00', 11, '2013-04-19 19:04:36', '2013-04-19 19:04:36', 47, 7);
+INSERT INTO `ib_kursus` (`ib_kursus_id`, `user_id`, `ib_kursus_peserta_name`, `ib_kursus_nilek`, `ib_kursus_peserta_jk`, `ib_kursus_peserta_tmplahir`, `ib_kursus_peserta_tgllahir`, `ib_kursus_peserta_negara`, `ib_kursus_peserta_pasport`, `ib_kursus_peserta_pasport_start`, `ib_kursus_peserta_pasport_exp`, `ib_kursus_peserta_alamat_ln`, `ib_kursus_peserta_alamat_id`, `ib_kursus_peserta_prop_id`, `ib_kursus_peserta_kabkot_id`, `ib_kursus_lbg_name`, `ib_kursus_lbg_alamat`, `ib_kursus_lbg_prop_id`, `ib_kursus_lbg_kabkot_id`, `ib_kursus_lbg_kodepos`, `ib_kursus_lbg_tlp`, `ib_kursus_lbg_fax`, `ib_kursus_lbg_pemodal`, `ib_kursus_lbg_ijin_oleh`, `ib_kursus_lbg_ijin_oleh_name`, `ib_kursus_lbg_ijin_no`, `ib_kursus_lbg_ijin_tgl`, `ib_kursus_lbg_ijin_start`, `ib_kursus_lbg_ijin_exp`, `ib_kursus_peserta_biaya`, `ib_kursus_peserta_alasan`, `ib_kursus_peserta_jaminan`, `ib_kursus_peserta_pendidikan`, `ib_kursus_peserta_nosurat`, `ib_kursus_peserta_tglsurat`, `ib_jeniskursus`, `ib_kursus_jenis_kursus`, `ib_kursus_create_at`, `ib_kursus_update_at`, `ib_kursus_update_by`, `ib_kursus_status`, `ib_kursus_jatuh_tempo`, `status_perpanjangan`) VALUES
+(47, 47, 'Harismo Aji, S.Si', '5432223409', 0, 'Malang', '1980-05-01', 2067, '01.02.03.04', '2012-01-01', '2013-01-01', 'Samhong Street 246A', 'Graha Utama Serpong Blok E, No.8', 11, 1101, 'IMLAC (Indonesia Language Center)', 'Jl. Gajayana No. 21B', 11, 1101, 34534, '3245345', '345345', 2, 'Kepala Dinas Pendidikan Simeulue', 'Prof. Dr. Kartolo, CISA, CEH', 'DP/02001/03/2007', '2007-03-04', '2007-04-03', '2015-04-03', 'Biaya ditanggung sendiri', 'Memahami Bahasa Indonesia', 'Pimpinan Lembaga Kursus IMLAC', 'Malang International School', '34.54/03/2013', '2013-04-25', 8, 0, '2013-04-06 11:04:14', '2013-07-20 22:52:33', 47, 107, '2015-10-25', 'N'),
+(67, 7, 'Hasan Sadikin', '3332321321', 0, 'puiop', '2000-02-01', 7, 'pou', '2012-01-03', '2013-11-22', 'uiop', 'uiopuiop', 12, 1202, 'dfghdfgh', 'dfghdfgh', 12, 1202, 345345, '345345345', '345345345', 2, '34563456', 'Prof. Dr. Kirun, CEH', '12/34/A/4', '2013-04-16', '2013-04-11', '2013-09-13', 'wetywety', 'ertyrty', 'sdgsdfg', 'sdfgreueryuerty', '23/6/d', '2012-11-15', 17, 0, '2013-04-08 08:58:50', '2015-10-25 17:34:02', 7, 67, '2015-10-25', 'N'),
+(87, 7, 'Eva Fatmawati', '2221213559', 1, 'Cirebon', '1980-01-13', 2067, '1234.98/2009', '2009-01-27', '2014-07-10', 'Wallstreet 34', 'Jl Merdeka 41', 32, 3274, 'Sentosa Mekar Jaya', 'Jl Diponegoro 255', 35, 3579, 65314, '0341-511460', '0341-588578', 2, 'Kepala Dinas Pendidikan Kota Batu', 'Prof. Dr. Zainal Rofi''i, CISA, CEH', '123.65.356', '2010-02-02', '2010-02-27', '2015-03-31', 'Biaya Sendiri', 'Mempelajari Bahasa Jawa', 'Joe Satriani', 'Sarjana Akuntansi', '23.12/asdf.23', '2013-05-01', 11, 0, '2013-04-08 15:37:48', '2013-09-10 22:01:51', 1, 47, '0000-00-00', 'N'),
+(107, 47, 'James Bond', '8768768768', 0, 'New York', '1970-02-04', 4707, '234-78678', '2011-02-01', '2014-04-04', 'asdfffd', 'asdfasdf', 34, 3402, 'fsadfasdf', 'asdfasdf', 34, 3471, 2343, '4554543', 'ddfgdsf', 2, 'asdfasdf', '', '', '2010-02-02', '2010-03-01', '2015-04-04', 'asdfdas', 'gdgdfsg', 'adsfgasf', 'asdfgasfdg', '', '0000-00-00', 8, 0, '2013-04-19 11:33:24', '2013-05-08 15:56:33', 47, 47, '0000-00-00', 'N'),
+(127, 47, 'Julia Perez', '9967657657', 1, 'Sydney', '2008-02-01', 267, '123-345435', '2011-02-05', '2013-12-13', 'abdabaf', 'ioykjghkghj', 19, 1901, 'ewtre', 'dfgsdfgdf', 19, 1901, 23432, 'asdfasd', 'asdfasdf', 2, 'asdfasdf', '', '', '2010-02-12', '2010-02-12', '2013-12-13', 'asdfasdf', 'asdfasdf', 'asdfasdfasdf', 'asdfasdfasdhsdg', '', '0000-00-00', 11, 0, '2013-04-19 12:04:36', '2013-04-19 19:04:36', 47, 7, '0000-00-00', 'N'),
+(128, 235, 'Jin Jeon', '7636387976', 1, 'Korea', '1985-01-21', 2367, 'M21997469', '2009-01-28', '2019-01-28', 'Young Deungpo dangsan 26A 30-2 1st floor BA37 Seoul Korea', 'JL Adi Sucipto No 1 Bandara Selaparang Lombok edit', 52, 5201, 'LKP Lombok Institute of Flight Technology', 'Jl. Adi Sucipto No 1', 52, 5271, 83124, '0370634126', '0370634126', 2, 'Kepala Dinas ', 'Pendidikan Pemuda dan Olahraga Kota Mataram', '343/D/DIKPORA/2010', '2010-10-02', '2010-10-02', '2014-10-02', 'Biaya sendiri', 'Untuk mengerti Ilmu Latihan Penerbangan', 'Wakil Utama PT Lombok Institute of Flight Technology (R. Nasution)', 'Bachelor in Busineess MArketing and Management', '3017/047/E2/DIKPORA/2013', '2014-12-29', 44, 0, '2014-07-10 08:16:37', '2014-08-11 13:58:25', 235, 7, '0000-00-00', 'N'),
+(129, 27, 'Tias Ade Putra', '8464343543', 0, 'Tanjung Enim', '1991-07-04', 2067, '6558765769875987', '2015-09-01', '2016-02-15', 'Turki', 'Bekasi', 32, 3204, 'PT Tripad Solution', 'Bekasi', 35, 3512, 675879876, '65654768', '5476798708098', 2, '67587659879860', 'Warsito', '6748764876876', '2015-09-07', '2015-09-07', '2015-12-09', 'Bahasa Turki', 'Keren', 'Allah', 'D3', '657647654', '2015-09-28', 99, 0, '2015-09-28 11:55:15', '2015-09-28 20:08:20', 27, 27, '0000-00-00', 'N');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_kursus_upload`
+-- Struktur dari tabel `ib_kursus_upload`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_kursus_upload` (
@@ -188,22 +392,23 @@ CREATE TABLE IF NOT EXISTS `ib_kursus_upload` (
   UNIQUE KEY `kursus_id` (`kursus_id`),
   KEY `user_id` (`user_id`),
   KEY `update_by` (`update_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=328 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=329 ;
 
 --
--- Dumping data for table `ib_kursus_upload`
+-- Dumping data untuk tabel `ib_kursus_upload`
 --
 
 INSERT INTO `ib_kursus_upload` (`upload_id`, `kursus_id`, `user_id`, `upload_at`, `update_at`, `update_by`, `file_surat`, `file_kuasa`, `file_nilek`, `file_kurikulum`, `file_aktanotaris`, `file_pengesahankumham`, `file_domisili`, `file_alasan`, `file_biaya`, `file_jaminan`, `file_paspor`, `file_cv`, `file_foto`, `file_ijazah`, `file_sehat`, `file_pernyataan`) VALUES
-(247, 47, 47, '2013-04-19 17:39:17', '2013-05-04 18:28:00', 47, 'Nescafe Vanilla Latte 640 gr - 61 (1).jpg', 'Nescafe Mocha Latte 375 gr (kopi+krimer+Gula+Moca) - 46.jpg', 'Kitkat Green Tea 110 isi 12 pc.jpg', 'Mini Dadu Wafer Take It (1kg-146; 500gr-74; 250gr-37).jpg', 'Nestle Pink Guava 600 gr - 39,5.jpg', 'Nestea Lemon Tea 1 kg - 49,5.jpg', 'Nescafe Lemonade 640 gr - 41.jpg', 'Dark Mede (1 kg- 139, 500gr 70, 250gr 36).jpg', 'Silver Quin Bites Mede (1kg-128; 500gr-65; 250gr-33).jpg', 'Roasted Almond (1 kg 150, 500gr 75, 250gr 38).jpg', 'Cadbury Hot Chocolate 450 gr (15 Sachet @30 gr) - 52,5.jpg', 'Nestle Milo 960 gr - 55.jpg', 'Nescafe Latte 500 gr - 37,5 (1).jpg', 'Nescafe Vanilla Latte 640 gr - 61 (1).jpg', 'Delfi Hot Cocoa 20 Sachet@25 gr-41.jpg', 'my JS1000 BTB_2.jpg'),
+(247, 47, 47, '2013-04-19 17:39:17', '2013-06-14 14:52:19', 47, 'Winter.jpg', 'Nescafe Mocha Latte 375 gr (kopi+krimer+Gula+Moca) - 46.jpg', 'Kitkat Green Tea 110 isi 12 pc.jpg', 'Mini Dadu Wafer Take It (1kg-146; 500gr-74; 250gr-37).jpg', 'Nestle Pink Guava 600 gr - 39,5.jpg', 'Nestea Lemon Tea 1 kg - 49,5.jpg', 'Nescafe Lemonade 640 gr - 41.jpg', 'Dark Mede (1 kg- 139, 500gr 70, 250gr 36).jpg', 'Silver Quin Bites Mede (1kg-128; 500gr-65; 250gr-33).jpg', 'Roasted Almond (1 kg 150, 500gr 75, 250gr 38).jpg', 'Cadbury Hot Chocolate 450 gr (15 Sachet @30 gr) - 52,5.jpg', 'Nestle Milo 960 gr - 55.jpg', 'Nescafe Latte 500 gr - 37,5 (1).jpg', 'Nescafe Vanilla Latte 640 gr - 61 (1).jpg', 'Delfi Hot Cocoa 20 Sachet@25 gr-41.jpg', 'boomboo logo 1.jpg'),
 (267, 107, 47, '2013-04-19 19:08:52', '2013-04-22 01:06:52', 47, 'Cadbury Hot Chocolate 450 gr (15 Sachet @30 gr) - 52,5.jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'my JS1000 BTB_3.jpg', 'my JS1000 BTB.jpg', 'my JS1000 BTB_1.jpg', 'my JS1000 BTB_2.jpg', 'my JS1000 BTB_3.jpg', 'my JS1000 BTB.jpg', 'my JS1000 BTB_1.jpg', 'my JS1000 BTB_2.jpg', 'my JS1000 BTB_3.jpg', 'my JS1000 BTB.jpg', 'my JS1000 BTB_1.jpg', 'my JS1000 BTB_2.jpg', 'my JS1000 BTB_3.jpg'),
 (307, 87, 7, '2013-05-04 15:16:13', '2013-05-04 19:52:23', 7, 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg'),
-(327, 67, 7, '2013-05-04 19:49:59', '2013-05-04 19:52:07', 7, 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg');
+(327, 67, 7, '2013-05-04 19:49:59', '2013-10-19 15:32:53', 7, 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Gambar 1.1 Desain Arsitektur SIMPAUDNI 2006-2009.JPG', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'my JS1000 BTB_2.jpg'),
+(328, 129, 27, '2015-09-29 23:53:06', '2015-09-29 23:53:06', 27, 'GeneralAccountingReports (1).pdf', 'GeneralAccountingReports (2).pdf', 'GeneralAccountingReports (3).pdf', 'GeneralAccountingReports.pdf', 'LampiransalesPrice.pdf', 'GeneralAccountingReports.pdf', 'Report (1).pdf', 'Report (2).pdf', 'Report (3).pdf', 'Sales_Invoice_1000114.20150412-161807.pdf', 'Sales_Quotation_1000000.20150428-082230.pdf', 'DATA DIRI_peserta tes.pdf', 'Penguins.jpg', 'Sales_Quotation_1000000.20150428-082230.pdf', 'PPBC01_15_02.pdf', 'PPBC01_15_02.pdf');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_kursus_upload_nilai`
+-- Struktur dari tabel `ib_kursus_upload_nilai`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_kursus_upload_nilai` (
@@ -229,6 +434,13 @@ CREATE TABLE IF NOT EXISTS `ib_kursus_upload_nilai` (
   `v_ijazah` int(1) NOT NULL,
   `v_sehat` int(1) NOT NULL,
   `v_pernyataan` int(1) NOT NULL,
+  `v_stm` int(1) NOT NULL,
+  `v_kitas` int(1) NOT NULL,
+  `v_rekom` int(1) NOT NULL,
+  `v_imtakemnaker` int(1) NOT NULL,
+  `v_suratkontakkerja` int(1) NOT NULL,
+  `v_hasilpenilaianijazah` int(1) NOT NULL,
+  `v_laporankegiatanproses` int(1) NOT NULL,
   `global_reason` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`nilai_kursus_id`),
   UNIQUE KEY `upload_id` (`ib_kursus_id`),
@@ -250,28 +462,30 @@ CREATE TABLE IF NOT EXISTS `ib_kursus_upload_nilai` (
   KEY `v_ijazah` (`v_ijazah`),
   KEY `v_sehat` (`v_sehat`),
   KEY `v_pernyataan` (`v_pernyataan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=208 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=209 ;
 
 --
--- Dumping data for table `ib_kursus_upload_nilai`
+-- Dumping data untuk tabel `ib_kursus_upload_nilai`
 --
 
-INSERT INTO `ib_kursus_upload_nilai` (`nilai_kursus_id`, `ib_kursus_id`, `created_by`, `create_at`, `update_at`, `update_by`, `v_surat`, `v_kuasa`, `v_nilek`, `v_kurikulum`, `v_aktanotaris`, `v_pengesahankumham`, `v_domisili`, `v_alasan`, `v_biaya`, `v_jaminan`, `v_paspor`, `v_cv`, `v_foto`, `v_ijazah`, `v_sehat`, `v_pernyataan`, `global_reason`) VALUES
-(127, 107, 47, '2013-04-20 15:35:42', '2013-04-22 01:07:46', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '<ol><li>asfdasdf</li><li>ewrtwert</li></ol>'),
-(147, 47, 47, '2013-04-20 17:45:14', '2013-05-07 15:15:45', 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 'Tolong diupload lagi ya<br>'),
-(187, 87, 7, '2013-05-04 15:16:14', '2013-05-07 13:23:20', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'Tulis keterangan jika dokumen bermasalah'),
-(207, 67, 7, '2013-05-04 19:49:59', '2013-05-05 14:12:18', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 'Tulis keterangan jika dokumen bermasalah');
+INSERT INTO `ib_kursus_upload_nilai` (`nilai_kursus_id`, `ib_kursus_id`, `created_by`, `create_at`, `update_at`, `update_by`, `v_surat`, `v_kuasa`, `v_nilek`, `v_kurikulum`, `v_aktanotaris`, `v_pengesahankumham`, `v_domisili`, `v_alasan`, `v_biaya`, `v_jaminan`, `v_paspor`, `v_cv`, `v_foto`, `v_ijazah`, `v_sehat`, `v_pernyataan`, `v_stm`, `v_kitas`, `v_rekom`, `v_imtakemnaker`, `v_suratkontakkerja`, `v_hasilpenilaianijazah`, `v_laporankegiatanproses`, `global_reason`) VALUES
+(127, 107, 47, '2013-04-20 15:35:42', '2013-04-22 01:07:46', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, '<ol><li>asfdasdf</li><li>ewrtwert</li></ol>'),
+(147, 47, 47, '2013-04-20 17:45:14', '2013-07-20 22:52:41', 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, '<p>Dalam upaya untuk memperbaiki kualitas pengadaan barang dan jasa sebagai bentuk perwujudan tata kelola pemerintahan yang baik, dan sebagai tindak lanjut dari Inpres Nomor 3 Tahun 2003. Seiring dengan perkembangannya</p>\r\n\r\n<p>Pertama yang harus <span style="color:#FF0000;">dilakukan </span>adalah memulai perjalanan dengan menggunakan skuter menuju Bandung melalui jalur puncak</p>\r\n'),
+(187, 87, 7, '2013-05-04 15:16:14', '2013-05-07 13:23:20', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 'Tulis keterangan jika dokumen bermasalah'),
+(207, 67, 7, '2013-05-04 19:49:59', '2015-10-25 23:29:50', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, '<p>Tulis keterangan jika dokumen bermasalah</p>\r\n'),
+(208, 129, 27, '2015-09-29 23:53:06', '2015-09-29 23:53:06', 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Tulis keterangan jika dokumen bermasalah');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_paud`
+-- Struktur dari tabel `ib_paud`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_paud` (
   `ib_paud_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `ib_paud_peserta_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `ib_paud_nilek` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ib_paud_peserta_jk` int(11) NOT NULL,
   `ib_paud_peserta_tmplahir` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ib_paud_peserta_tgllahir` date NOT NULL,
@@ -316,7 +530,10 @@ CREATE TABLE IF NOT EXISTS `ib_paud` (
   `ib_paud_create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ib_paud_update_at` datetime NOT NULL,
   `ib_paud_update_by` int(11) NOT NULL,
+  `ib_paud_jenis_paud` int(3) NOT NULL,
   `ib_paud_status` int(11) NOT NULL,
+  `ib_paud_jatuh_tempo` date NOT NULL,
+  `status_perpanjangan` char(1) NOT NULL DEFAULT 'N',
   PRIMARY KEY (`ib_paud_id`),
   KEY `user_id` (`user_id`),
   KEY `ib_paud_peserta_negara` (`ib_paud_peserta_negara`),
@@ -329,20 +546,21 @@ CREATE TABLE IF NOT EXISTS `ib_paud` (
   KEY `ib_paud_status` (`ib_paud_status`),
   KEY `ib_paud_ayah_wn` (`ib_paud_ayah_wn`),
   KEY `ib_paud_ibu_wn` (`ib_paud_ibu_wn`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=108 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=109 ;
 
 --
--- Dumping data for table `ib_paud`
+-- Dumping data untuk tabel `ib_paud`
 --
 
-INSERT INTO `ib_paud` (`ib_paud_id`, `user_id`, `ib_paud_peserta_name`, `ib_paud_peserta_jk`, `ib_paud_peserta_tmplahir`, `ib_paud_peserta_tgllahir`, `ib_paud_peserta_negara`, `ib_paud_ayah_wn`, `ib_paud_ayah_pasport`, `ib_paud_ayah_pasport_start`, `ib_paud_ayah_pasport_exp`, `ib_paud_ayah_ktp`, `ib_paud_ayah_ktp_start`, `ib_paud_ayah_ktp_exp`, `ib_paud_ibu_wn`, `ib_paud_ibu_pasport`, `ib_paud_ibu_pasport_start`, `ib_paud_ibu_pasport_exp`, `ib_paud_ibu_ktp`, `ib_paud_ibu_ktp_start`, `ib_paud_ibu_ktp_exp`, `ib_paud_peserta_surat`, `ib_paud_peserta_surat_tgl`, `ib_paud_peserta_ortu_name`, `ib_paud_peserta_ortu_name_ibu`, `ib_paud_peserta_ortu_job`, `ib_paud_peserta_kk`, `ib_paud_peserta_tgjwb`, `ib_paud_peserta_alamat_ln`, `ib_paud_peserta_alamat_id`, `ib_paud_peserta_prop_id`, `ib_paud_peserta_kabkot_id`, `ib_paud_lbg_name`, `ib_paud_lbg_alamat`, `ib_paud_lbg_prop_id`, `ib_paud_lbg_kabkot_id`, `ib_paud_lbg_kodepos`, `ib_paud_lbg_tlp`, `ib_paud_lbg_fax`, `ib_paud_lbg_ijin_oleh`, `ib_paud_lbg_ijin_tgl`, `ib_paud_lbg_ijin_start`, `ib_paud_lbg_ijin_exp`, `ib_paud_peserta_jaminan`, `ib_paud_create_at`, `ib_paud_update_at`, `ib_paud_update_by`, `ib_paud_status`) VALUES
-(47, 47, 'Sudharmono', 0, 'Surabaya', '1980-04-05', 2067, 2, 'B. 89790', '2001-03-01', '2013-12-31', '98978765456', '2010-01-01', '2015-03-06', 1, 'G. 345656', '2011-02-02', '2015-03-05', '546768970001', '2011-02-02', '2016-03-03', '45/op/678.J', '2013-05-09', 'Budi Yuwono', 'Marina', 'Wiraswasta', '4567.h.78', 'Pimpinan Lembaga PAUD', '', 'Jl. Tjut Njak Dien 234F', 11, 1101, 'TK Internasional Sukhoi', 'Jl Diponegoro 3C', 11, 1101, 345345, '3245345', '345345', 'Kepala Dinas Pendidikan Simeulue', '2013-04-09', '2013-04-01', '2014-02-28', 'asdfasdf', '2013-04-06 18:04:14', '2013-05-10 00:34:08', 1, 107),
-(107, 7, 'Ahmad Dhani', 0, 'Kabul', '2009-02-05', 7, 1, 'A 23578', '2012-02-09', '2013-12-27', '4356474574756', '2010-02-04', '2015-03-04', 2, 'R 4555456', '2011-02-09', '2016-04-08', '3453475674567', '2009-02-03', '2016-04-07', 'safdasdf', '2013-05-09', 'Ali Khadafi', 'Kate Winslet', 'Swasta', '345dsdg456', 'Orang Tua', 'St. Louis 23A/34H, Kabul, Afghanistan', 'Jl Sriwijaya 356', 16, 1674, 'TK NEGERI PEMBINA', 'Jl Diponegoro 342B', 12, 1202, 534453, '34534345', '34554354', 'Kepala Dinas Pendidikan Mandailing Natal', '2008-03-28', '2008-03-28', '2020-03-05', 'asdfasdfasdf', '2013-05-04 18:53:35', '2013-05-10 00:15:05', 1, 47);
+INSERT INTO `ib_paud` (`ib_paud_id`, `user_id`, `ib_paud_peserta_name`, `ib_paud_nilek`, `ib_paud_peserta_jk`, `ib_paud_peserta_tmplahir`, `ib_paud_peserta_tgllahir`, `ib_paud_peserta_negara`, `ib_paud_ayah_wn`, `ib_paud_ayah_pasport`, `ib_paud_ayah_pasport_start`, `ib_paud_ayah_pasport_exp`, `ib_paud_ayah_ktp`, `ib_paud_ayah_ktp_start`, `ib_paud_ayah_ktp_exp`, `ib_paud_ibu_wn`, `ib_paud_ibu_pasport`, `ib_paud_ibu_pasport_start`, `ib_paud_ibu_pasport_exp`, `ib_paud_ibu_ktp`, `ib_paud_ibu_ktp_start`, `ib_paud_ibu_ktp_exp`, `ib_paud_peserta_surat`, `ib_paud_peserta_surat_tgl`, `ib_paud_peserta_ortu_name`, `ib_paud_peserta_ortu_name_ibu`, `ib_paud_peserta_ortu_job`, `ib_paud_peserta_kk`, `ib_paud_peserta_tgjwb`, `ib_paud_peserta_alamat_ln`, `ib_paud_peserta_alamat_id`, `ib_paud_peserta_prop_id`, `ib_paud_peserta_kabkot_id`, `ib_paud_lbg_name`, `ib_paud_lbg_alamat`, `ib_paud_lbg_prop_id`, `ib_paud_lbg_kabkot_id`, `ib_paud_lbg_kodepos`, `ib_paud_lbg_tlp`, `ib_paud_lbg_fax`, `ib_paud_lbg_ijin_oleh`, `ib_paud_lbg_ijin_tgl`, `ib_paud_lbg_ijin_start`, `ib_paud_lbg_ijin_exp`, `ib_paud_peserta_jaminan`, `ib_paud_create_at`, `ib_paud_update_at`, `ib_paud_update_by`, `ib_paud_jenis_paud`, `ib_paud_status`, `ib_paud_jatuh_tempo`, `status_perpanjangan`) VALUES
+(47, 47, 'Sudharmono', '576554545454', 0, 'Surabaya', '1980-04-05', 2067, 2, 'B. 89790', '2001-03-01', '2013-12-31', '98978765456', '2010-01-01', '2015-03-06', 1, 'G. 345656', '2011-02-02', '2015-03-05', '546768970001', '2011-02-02', '2016-03-03', '45/op/678.J', '2013-05-09', 'Budi Yuwono', 'Marina', 'Wiraswasta', '4567.h.78', 'Pimpinan Lembaga PAUD', '', 'Jl. Tjut Njak Dien 234F', 11, 1101, 'TK Internasional Sukhoi', 'Jl Diponegoro 3C', 11, 1101, 345345, '3245345', '345345', 'Kepala Dinas Pendidikan Simeulue', '2013-04-09', '2013-04-01', '2014-02-28', '5426546456', '2013-04-06 11:04:14', '2015-10-25 22:50:33', 1, 0, 67, '2015-10-24', 'N'),
+(107, 7, 'Ahmad Dhani', '554353543', 0, 'Kabul', '2009-02-05', 7, 1, 'A 23578', '2012-02-09', '2013-12-27', '4356474574756', '2010-02-04', '2015-03-04', 2, 'R 4555456', '2011-02-09', '2016-04-08', '3453475674567', '2009-02-03', '2016-04-07', 'safdasdf', '2013-05-09', 'Ali Khadafi', 'Kate Winslet', 'Swasta', '345dsdg456', 'Orang Tua', 'St. Louis 23A/34H, Kabul, Afghanistan', 'Jl Sriwijaya 356', 16, 1674, 'TK NEGERI PEMBINA', 'Jl Diponegoro 342B', 12, 1202, 534453, '34534345', '34554354', 'Kepala Dinas Pendidikan Mandailing Natal', '2008-03-28', '2008-03-28', '2020-03-05', 'asdfasdfasdf', '2013-05-04 11:53:35', '2013-07-20 23:12:20', 1, 0, 47, '0000-00-00', 'N'),
+(108, 235, 'Katriel Jedidiah Alvaro Villamor', '4443243252', 1, 'Cag De Oro City', '2009-11-13', 3487, 2, 'EC0292259', '2014-02-13', '2019-02-12', '', '0000-00-00', '0000-00-00', 2, 'EB8010684', '2013-04-30', '2018-04-29', '', '0000-00-00', '0000-00-00', '13/YBS/VI/2014', '2014-06-02', 'Arman Diola Villamor', 'Lois Alvaro Villamor', 'Guru IPS - SMA Bukit Sion', '1234567890', 'Husin Mima', 'B6 42 Las Villas Subd, Gen SAntos City, Phillipines', 'Taman Kebon Jeruk Blok GA-1', 31, 3174, 'TK Kristen Bukit Sion', 'Taman Kebon Jeruk Kav. G-VII Srengseng, Kembangan', 31, 3174, 12345, '021-58904176', '021-58904185', 'Suku Dinas Pendidikan Dasar Jakarta Barat', '2010-04-13', '2010-04-13', '2015-04-13', 'Orang Tua', '2014-07-16 03:05:59', '2014-07-16 10:05:59', 235, 0, 27, '0000-00-00', 'N');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_paud_upload`
+-- Struktur dari tabel `ib_paud_upload`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_paud_upload` (
@@ -366,20 +584,21 @@ CREATE TABLE IF NOT EXISTS `ib_paud_upload` (
   KEY `paud_id` (`paud_id`),
   KEY `user_id` (`user_id`),
   KEY `update_by` (`update_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=188 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=189 ;
 
 --
--- Dumping data for table `ib_paud_upload`
+-- Dumping data untuk tabel `ib_paud_upload`
 --
 
 INSERT INTO `ib_paud_upload` (`upload_id`, `paud_id`, `user_id`, `upload_at`, `update_at`, `update_by`, `file_surat`, `file_kuasa`, `file_biaya`, `file_paspor_anak`, `file_aktalahir`, `file_paspor_ortu`, `file_kk`, `file_nikah`, `file_jaminan`, `file_domisili`) VALUES
 (167, 47, 47, '2013-05-04 16:07:21', '2013-05-07 13:17:10', 47, 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Nestle Pink Guava 600 gr - 39,5.jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg'),
-(187, 107, 7, '2013-05-04 19:19:40', '2013-05-04 20:20:59', 7, 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg');
+(187, 107, 7, '2013-05-04 19:19:40', '2013-05-04 20:20:59', 7, 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg', 'Kitkat  15 gr (134;46pc, 68;23pc, 34;11pc).jpg'),
+(188, 108, 47, '2014-08-11 15:52:30', '2014-08-11 15:52:30', 235, 'akta lahir.pdf', 'passport anak.pdf', 'passport ayah.pdf', 'passport ibu.pdf', 'passport ibu.pdf', 'srt jaminan biaya.pdf', 'srt jaminan.pdf', 'srt kuasa.pdf', 'srt permohonan.pdf', 'srt jaminan biaya.pdf');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_paud_upload_nilai`
+-- Struktur dari tabel `ib_paud_upload_nilai`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_paud_upload_nilai` (
@@ -404,20 +623,21 @@ CREATE TABLE IF NOT EXISTS `ib_paud_upload_nilai` (
   UNIQUE KEY `upload_id` (`ib_paud_id`),
   KEY `created_by` (`created_by`),
   KEY `update_by` (`update_by`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
 
 --
--- Dumping data for table `ib_paud_upload_nilai`
+-- Dumping data untuk tabel `ib_paud_upload_nilai`
 --
 
 INSERT INTO `ib_paud_upload_nilai` (`nilai_paud_id`, `ib_paud_id`, `created_by`, `create_at`, `update_at`, `update_by`, `v_surat`, `v_kuasa`, `v_biaya`, `v_paspor_anak`, `v_aktalahir`, `v_paspor_ortu`, `v_kk`, `v_nikah`, `v_jaminan`, `v_domisili`, `global_reason`) VALUES
 (27, 47, 47, '2013-05-04 16:07:21', '2013-05-07 13:46:58', 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 'Tulis keterangan jika dokumen bermasalah'),
-(47, 107, 7, '2013-05-04 19:19:40', '2013-05-04 20:21:33', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'Tulis keterangan jika dokumen bermasalah');
+(47, 107, 7, '2013-05-04 19:19:40', '2015-10-21 23:20:45', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 'Tulis keterangan jika dokumen bermasalah'),
+(48, 108, 235, '2014-08-11 15:52:30', '2014-08-11 15:52:30', 235, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Tulis keterangan jika dokumen bermasalah');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_rcountries`
+-- Struktur dari tabel `ib_rcountries`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_rcountries` (
@@ -429,7 +649,7 @@ CREATE TABLE IF NOT EXISTS `ib_rcountries` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4968 ;
 
 --
--- Dumping data for table `ib_rcountries`
+-- Dumping data untuk tabel `ib_rcountries`
 --
 
 INSERT INTO `ib_rcountries` (`id`, `country`, `alpha_2`, `alpha_3`) VALUES
@@ -686,7 +906,47 @@ INSERT INTO `ib_rcountries` (`id`, `country`, `alpha_2`, `alpha_3`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_rjeniskelamin`
+-- Struktur dari tabel `ib_rjenisimta`
+--
+
+CREATE TABLE IF NOT EXISTS `ib_rjenisimta` (
+  `jenisimta_id` int(3) NOT NULL,
+  `jenisimta` varchar(24) DEFAULT NULL,
+  PRIMARY KEY (`jenisimta_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ib_rjenisimta`
+--
+
+INSERT INTO `ib_rjenisimta` (`jenisimta_id`, `jenisimta`) VALUES
+(1, 'Baru'),
+(2, 'Perpanjangan');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ib_rjenisjabatanrptka`
+--
+
+CREATE TABLE IF NOT EXISTS `ib_rjenisjabatanrptka` (
+  `jenisjabatanrptka_id` int(3) NOT NULL,
+  `jenisjabatanrptka` varchar(24) DEFAULT NULL,
+  PRIMARY KEY (`jenisjabatanrptka_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ib_rjenisjabatanrptka`
+--
+
+INSERT INTO `ib_rjenisjabatanrptka` (`jenisjabatanrptka_id`, `jenisjabatanrptka`) VALUES
+(1, 'Guru Taman Kanak-kanak'),
+(2, 'Guru Sekolah Dasar');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ib_rjeniskelamin`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_rjeniskelamin` (
@@ -698,7 +958,7 @@ CREATE TABLE IF NOT EXISTS `ib_rjeniskelamin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ib_rjeniskelamin`
+-- Dumping data untuk tabel `ib_rjeniskelamin`
 --
 
 INSERT INTO `ib_rjeniskelamin` (`ib_jeniskelamin_id`, `ib_jeniskelamin`, `ib_jeniskelamin_title`, `ib_jeniskelamin_huruf`) VALUES
@@ -708,7 +968,7 @@ INSERT INTO `ib_rjeniskelamin` (`ib_jeniskelamin_id`, `ib_jeniskelamin`, `ib_jen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_rjeniskursus`
+-- Struktur dari tabel `ib_rjeniskursus`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_rjeniskursus` (
@@ -718,7 +978,7 @@ CREATE TABLE IF NOT EXISTS `ib_rjeniskursus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ib_rjeniskursus`
+-- Dumping data untuk tabel `ib_rjeniskursus`
 --
 
 INSERT INTO `ib_rjeniskursus` (`jeniskursus_id`, `jeniskursus`) VALUES
@@ -796,7 +1056,30 @@ INSERT INTO `ib_rjeniskursus` (`jeniskursus_id`, `jeniskursus`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_rlabel`
+-- Struktur dari tabel `ib_rjenislembaga`
+--
+
+CREATE TABLE IF NOT EXISTS `ib_rjenislembaga` (
+  `jenislembaga_id` int(3) NOT NULL,
+  `jenislembaga` varchar(24) DEFAULT NULL,
+  PRIMARY KEY (`jenislembaga_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `ib_rjenislembaga`
+--
+
+INSERT INTO `ib_rjenislembaga` (`jenislembaga_id`, `jenislembaga`) VALUES
+(1, 'Yayasan'),
+(2, 'Non Yayasan'),
+(3, 'Negri'),
+(4, 'Swasta'),
+(5, 'Lain-lain');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ib_rlabel`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_rlabel` (
@@ -806,7 +1089,7 @@ CREATE TABLE IF NOT EXISTS `ib_rlabel` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
 
 --
--- Dumping data for table `ib_rlabel`
+-- Dumping data untuk tabel `ib_rlabel`
 --
 
 INSERT INTO `ib_rlabel` (`label_id`, `label`) VALUES
@@ -818,7 +1101,27 @@ INSERT INTO `ib_rlabel` (`label_id`, `label`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_rstatus`
+-- Struktur dari tabel `ib_rpemodalan`
+--
+
+CREATE TABLE IF NOT EXISTS `ib_rpemodalan` (
+  `ib_pemodalan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ib_pemodalan` varchar(100) NOT NULL,
+  PRIMARY KEY (`ib_pemodalan_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `ib_rpemodalan`
+--
+
+INSERT INTO `ib_rpemodalan` (`ib_pemodalan_id`, `ib_pemodalan`) VALUES
+(1, 'Modal Asing'),
+(2, 'Modal dalam Negeri');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `ib_rstatus`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_rstatus` (
@@ -832,7 +1135,7 @@ CREATE TABLE IF NOT EXISTS `ib_rstatus` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
 
 --
--- Dumping data for table `ib_rstatus`
+-- Dumping data untuk tabel `ib_rstatus`
 --
 
 INSERT INTO `ib_rstatus` (`status_id`, `status`, `label_id`, `desc`) VALUES
@@ -846,7 +1149,7 @@ INSERT INTO `ib_rstatus` (`status_id`, `status`, `label_id`, `desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_rstatusdokumen`
+-- Struktur dari tabel `ib_rstatusdokumen`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_rstatusdokumen` (
@@ -856,7 +1159,7 @@ CREATE TABLE IF NOT EXISTS `ib_rstatusdokumen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ib_rstatusdokumen`
+-- Dumping data untuk tabel `ib_rstatusdokumen`
 --
 
 INSERT INTO `ib_rstatusdokumen` (`ib_dok_status_id`, `dok_status`) VALUES
@@ -866,7 +1169,7 @@ INSERT INTO `ib_rstatusdokumen` (`ib_dok_status_id`, `dok_status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ib_rwniwna`
+-- Struktur dari tabel `ib_rwniwna`
 --
 
 CREATE TABLE IF NOT EXISTS `ib_rwniwna` (
@@ -877,7 +1180,7 @@ CREATE TABLE IF NOT EXISTS `ib_rwniwna` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `ib_rwniwna`
+-- Dumping data untuk tabel `ib_rwniwna`
 --
 
 INSERT INTO `ib_rwniwna` (`id`, `wn`, `wnlong`) VALUES
@@ -887,7 +1190,7 @@ INSERT INTO `ib_rwniwna` (`id`, `wn`, `wnlong`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profiles`
+-- Struktur dari tabel `profiles`
 --
 
 CREATE TABLE IF NOT EXISTS `profiles` (
@@ -895,10 +1198,10 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `lastname` varchar(50) NOT NULL DEFAULT '',
   `firstname` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=228 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=241 ;
 
 --
--- Dumping data for table `profiles`
+-- Dumping data untuk tabel `profiles`
 --
 
 INSERT INTO `profiles` (`user_id`, `lastname`, `firstname`) VALUES
@@ -908,14 +1211,24 @@ INSERT INTO `profiles` (`user_id`, `lastname`, `firstname`) VALUES
 (27, 'Fatmawati', 'Eva'),
 (47, 'garut', 'dodol'),
 (167, 'Gokil', 'Amih'),
-(187, 'Belantara', 'Hutan'),
-(207, 'Gemuk', 'Dul'),
-(227, 'Juniartriarso', 'Memet');
+(227, 'Juniartriarso', 'Memet'),
+(228, 'rahman', 'fathur'),
+(230, 'Sudjatmiko', 'Budiman'),
+(231, 'Lindung', 'Hutan'),
+(232, 'kotcher', 'john'),
+(233, 'lopez', 'aray'),
+(234, 'lopez', 'aray'),
+(235, 'coba', 'uji'),
+(236, 'Walesa', 'Widya'),
+(237, 'Liesanggoro', 'Unang'),
+(238, 'Wijanarti', 'Indrati'),
+(239, 'fat', 'faa'),
+(240, 'faisal', 'rais');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profiles_fields`
+-- Struktur dari tabel `profiles_fields`
 --
 
 CREATE TABLE IF NOT EXISTS `profiles_fields` (
@@ -940,7 +1253,7 @@ CREATE TABLE IF NOT EXISTS `profiles_fields` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `profiles_fields`
+-- Dumping data untuk tabel `profiles_fields`
 --
 
 INSERT INTO `profiles_fields` (`id`, `varname`, `title`, `field_type`, `field_size`, `field_size_min`, `required`, `match`, `range`, `error_message`, `other_validator`, `default`, `widget`, `widgetparams`, `position`, `visible`) VALUES
@@ -950,7 +1263,7 @@ INSERT INTO `profiles_fields` (`id`, `varname`, `title`, `field_type`, `field_si
 -- --------------------------------------------------------
 
 --
--- Table structure for table `psr_rkabupaten_kota`
+-- Struktur dari tabel `psr_rkabupaten_kota`
 --
 
 CREATE TABLE IF NOT EXISTS `psr_rkabupaten_kota` (
@@ -968,7 +1281,7 @@ CREATE TABLE IF NOT EXISTS `psr_rkabupaten_kota` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9472 ;
 
 --
--- Dumping data for table `psr_rkabupaten_kota`
+-- Dumping data untuk tabel `psr_rkabupaten_kota`
 --
 
 INSERT INTO `psr_rkabupaten_kota` (`psr_kabkot_id`, `psr_kabkot_name`, `psr_prop_id`, `psr_reg_id`, `psr_posted_by`, `psr_lastupdate`, `psr_sync`) VALUES
@@ -1473,7 +1786,7 @@ INSERT INTO `psr_rkabupaten_kota` (`psr_kabkot_id`, `psr_kabkot_name`, `psr_prop
 -- --------------------------------------------------------
 
 --
--- Table structure for table `psr_rpropinsi`
+-- Struktur dari tabel `psr_rpropinsi`
 --
 
 CREATE TABLE IF NOT EXISTS `psr_rpropinsi` (
@@ -1489,7 +1802,7 @@ CREATE TABLE IF NOT EXISTS `psr_rpropinsi` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=95 ;
 
 --
--- Dumping data for table `psr_rpropinsi`
+-- Dumping data untuk tabel `psr_rpropinsi`
 --
 
 INSERT INTO `psr_rpropinsi` (`psr_prop_id`, `psr_prop_name`, `psr_reg_id`, `psr_posted_by`, `psr_lastupdate`, `psr_sync`) VALUES
@@ -1530,7 +1843,7 @@ INSERT INTO `psr_rpropinsi` (`psr_prop_id`, `psr_prop_name`, `psr_reg_id`, `psr_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `psr_rregional`
+-- Struktur dari tabel `psr_rregional`
 --
 
 CREATE TABLE IF NOT EXISTS `psr_rregional` (
@@ -1543,7 +1856,7 @@ CREATE TABLE IF NOT EXISTS `psr_rregional` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `psr_rregional`
+-- Dumping data untuk tabel `psr_rregional`
 --
 
 INSERT INTO `psr_rregional` (`psr_reg_id`, `psr_reg_name`, `psr_posted_by`, `psr_lastupdate`, `psr_sync`) VALUES
@@ -1559,7 +1872,7 @@ INSERT INTO `psr_rregional` (`psr_reg_id`, `psr_reg_name`, `psr_posted_by`, `psr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rights`
+-- Struktur dari tabel `rights`
 --
 
 CREATE TABLE IF NOT EXISTS `rights` (
@@ -1569,15 +1882,10 @@ CREATE TABLE IF NOT EXISTS `rights` (
   PRIMARY KEY (`itemname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `rights`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -1595,42 +1903,52 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`),
   KEY `superuser` (`superuser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=228 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=241 ;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `activkey`, `create_at`, `lastvisit_at`, `superuser`, `status`) VALUES
-(1, 'admin', '36c39109070798d333d4911cb197ac7d', 'paudni.ks@gmail.com', 'fdda3e49c75ad6def58cef7ab7009212', '2013-04-05 23:38:14', '2013-05-09 09:54:39', 1, 1),
-(2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2013-04-05 23:38:14', '2013-04-05 23:16:42', 0, 1),
-(7, 'orezomi', '912ec803b2ce49e4a541068d495ab570', 'harismoaji@yahoo.com', '8becffd348903853be9e86032d26ede3', '2013-04-05 23:48:23', '2013-05-09 09:48:27', 1, 1),
-(27, 'amih', 'eaddaa9c16eb0ccf9601ec2dfa3df112', 'harismoaji@gmail.com', 'ed2fa5486bfdc8d908cd1c44e37020db', '2013-04-06 17:34:33', '2013-05-04 14:41:34', 0, 1),
-(47, 'qwerty', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'allindonesiaofficial@gmail.com', 'ecead5ad46d7bf1720de8a10fc6a5220', '2013-04-06 18:04:14', '2013-05-07 18:31:52', 0, 1),
-(167, 'amih2', '3f063fe42a6718263f6112c5e5ad143f', 'caprievas@yahoo.com', '0c378b1aaa7f7a04ae1ec6385d6cffc8', '2013-04-21 12:07:59', '2013-04-21 11:38:26', 0, 1),
-(187, 'orezomi2', '15d7000797a33d7af16c9b052f852768', 'orezomi.dream@gmail.com', '0064d2e2a3beaf5130f22a2036717c0f', '2013-04-21 12:17:06', '2013-04-21 13:37:49', 0, 1),
-(207, 'dul', 'c155fd19f1bc9e9e83ce15f6444609df', 'zerrojeans@yahoo.com.sg', 'd07274aff829378461e09fc13dbd8a40', '2013-04-22 01:39:35', '0000-00-00 00:00:00', 0, 0),
-(227, 'memet', 'd2e2730dd03f2d41ca576729034b5bc3', 'juniartriarso@gmail.com', '6e39f58fe9e8285effed1579bb74adb3', '2013-04-22 10:00:10', '2013-04-22 09:35:22', 0, 1);
+(1, 'admin', 'e807f1fcf82d132f9bb018ca6738a19f', 'paudni.ks@gmail.com', '4c885e4a50b04a392cde0a09a468af95', '2013-04-05 16:38:14', '2015-10-27 11:00:05', 1, 1),
+(2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', 'demo@example.com', '099f825543f7850cc038b90aaff39fac', '2013-04-05 16:38:14', '2013-04-05 16:16:42', 0, 1),
+(7, 'orezomi', '912ec803b2ce49e4a541068d495ab570', 'harismoaji@yahoo.com', '8becffd348903853be9e86032d26ede3', '2013-04-05 16:48:23', '2013-10-19 08:32:23', 1, 1),
+(27, 'amih', 'e807f1fcf82d132f9bb018ca6738a19f', 'harismoaji@gmail.com', 'ed2fa5486bfdc8d908cd1c44e37020db', '2013-04-06 10:34:33', '2015-10-25 16:00:46', 0, 1),
+(47, 'qwerty', 'd8578edf8458ce06fbc5bb76a58c5ca4', 'allindonesiaofficial@gmail.com', 'ecead5ad46d7bf1720de8a10fc6a5220', '2013-04-06 11:04:14', '2013-06-14 07:51:58', 0, 1),
+(167, 'amih2', '3f063fe42a6718263f6112c5e5ad143f', 'caprievas@yahoo.com', '0c378b1aaa7f7a04ae1ec6385d6cffc8', '2013-04-21 05:07:59', '2013-04-21 04:38:26', 0, 1),
+(227, 'memet', 'd2e2730dd03f2d41ca576729034b5bc3', 'juniartriarso@gmail.com', '6e39f58fe9e8285effed1579bb74adb3', '2013-04-22 03:00:10', '2013-04-22 02:35:22', 0, 1),
+(228, 'fathurrahan', 'c317ccbb118d2781da9846a897bff9c2', 'fathur@gmail.com', '1e29275c0552aa949b57cd80eda58357', '2013-07-17 05:55:39', '2014-05-08 07:00:47', 0, 1),
+(230, 'contoh', '70766fb44a79896ca152987be3a33174', 'zerrojeans@yahoo.com.sg', '82e2752681b9aa2cd06e430240b5aea1', '2013-07-20 04:03:34', '2013-07-21 06:10:51', 0, 1),
+(231, 'orezomi2', 'c69874b898abb180ac71bd99bc16f8fb', 'orezomi.dream@gmail.com', '56aecd5194963ff8aecc335711898f2d', '2013-08-21 05:09:53', '2013-08-21 06:07:58', 0, 1),
+(232, 'john', 'fecb5d74b04ea3beb838e3cf656117f6', 'john@walstreet.co.id', '9d6791cbd8a4e56c0ef91ee7c0282544', '2014-04-07 03:01:51', '0000-00-00 00:00:00', 0, 0),
+(233, 'tesari', '9b43744d6797969c8f61e613839198f2', 'ray@ray.com', 'c4cc6d53615604bb47aebad7bf7e9062', '2014-04-26 13:10:49', '0000-00-00 00:00:00', 0, 0),
+(234, 'tesari1', '51b856d63659b9e810f47c653ab3e1c2', 'araynatuch@yahoo.com', '12bb94c7d4be5c73216f6185daf34eac', '2014-04-26 13:21:28', '0000-00-00 00:00:00', 0, 0),
+(235, 'uji_coba', '3337eb698332fb85da980403c0284364', 'juniartriarso@yahoo.com', '1647dcca813eefa2e1a1ba40f3869422', '2014-07-10 08:01:28', '2014-11-24 13:43:33', 0, 1),
+(236, 'w41l', '99a27e130e6cea636de2b928cff2b4f5', 'walecha99@gmail.com', 'b9470ee778c002e2d1fc564424126181', '2014-08-11 04:15:50', '2014-08-11 04:48:37', 0, 1),
+(237, 'PuriBahasa2014', '28b5855c3597a146f5be591076678b8e', 'info@puribahasa.com', '46e3e682e7a87be96c0e01725e97a4b9', '2014-11-24 13:15:41', '0000-00-00 00:00:00', 0, 0),
+(238, 'INTICollege', '434b57da7391fedccc002d6741f2122a', 'human.resource@inti.ac.id', 'f0978e4841dea72ce960fcb1e70ffb3c', '2014-11-24 13:37:46', '0000-00-00 00:00:00', 0, 0),
+(239, 'fathur', 'e807f1fcf82d132f9bb018ca6738a19f', 'fathur16@yahoo.com', 'e98e92467c02fb48c02976afc786ba72', '2015-07-06 04:02:58', '0000-00-00 00:00:00', 0, 0),
+(240, 'rais', '25d55ad283aa400af464c76d713c07ad', 'falakhyar@yahoo.com', '73dd23f8ff105ec635285c2e3d383785', '2015-09-03 04:15:19', '0000-00-00 00:00:00', 0, 0);
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `authassignment`
+-- Ketidakleluasaan untuk tabel `authassignment`
 --
 ALTER TABLE `authassignment`
   ADD CONSTRAINT `AuthAssignment_ibfk_1` FOREIGN KEY (`itemname`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `authitemchild`
+-- Ketidakleluasaan untuk tabel `authitemchild`
 --
 ALTER TABLE `authitemchild`
   ADD CONSTRAINT `AuthItemChild_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `AuthItemChild_ibfk_2` FOREIGN KEY (`child`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `ib_kursus`
+-- Ketidakleluasaan untuk tabel `ib_kursus`
 --
 ALTER TABLE `ib_kursus`
   ADD CONSTRAINT `ib_kursus_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
@@ -1642,10 +1960,11 @@ ALTER TABLE `ib_kursus`
   ADD CONSTRAINT `ib_kursus_ibfk_6` FOREIGN KEY (`ib_kursus_lbg_kabkot_id`) REFERENCES `psr_rkabupaten_kota` (`psr_kabkot_id`),
   ADD CONSTRAINT `ib_kursus_ibfk_7` FOREIGN KEY (`ib_kursus_peserta_prop_id`) REFERENCES `psr_rpropinsi` (`psr_prop_id`),
   ADD CONSTRAINT `ib_kursus_ibfk_8` FOREIGN KEY (`ib_kursus_peserta_kabkot_id`) REFERENCES `psr_rkabupaten_kota` (`psr_kabkot_id`),
-  ADD CONSTRAINT `ib_kursus_ibfk_9` FOREIGN KEY (`ib_kursus_peserta_jk`) REFERENCES `ib_rjeniskelamin` (`ib_jeniskelamin_id`);
+  ADD CONSTRAINT `ib_kursus_ibfk_9` FOREIGN KEY (`ib_kursus_peserta_jk`) REFERENCES `ib_rjeniskelamin` (`ib_jeniskelamin_id`),
+  ADD CONSTRAINT `ib_kursus_pemodal_fk` FOREIGN KEY (`ib_kursus_lbg_pemodal`) REFERENCES `ib_rpemodalan` (`ib_pemodalan_id`);
 
 --
--- Constraints for table `ib_kursus_upload`
+-- Ketidakleluasaan untuk tabel `ib_kursus_upload`
 --
 ALTER TABLE `ib_kursus_upload`
   ADD CONSTRAINT `ib_kursus_upload_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `ib_kursus` (`user_id`),
@@ -1653,7 +1972,7 @@ ALTER TABLE `ib_kursus_upload`
   ADD CONSTRAINT `ib_kursus_upload_ibfk_4` FOREIGN KEY (`kursus_id`) REFERENCES `ib_kursus` (`ib_kursus_id`);
 
 --
--- Constraints for table `ib_kursus_upload_nilai`
+-- Ketidakleluasaan untuk tabel `ib_kursus_upload_nilai`
 --
 ALTER TABLE `ib_kursus_upload_nilai`
   ADD CONSTRAINT `ib_kursus_upload_nilai_ibfk_10` FOREIGN KEY (`v_kurikulum`) REFERENCES `ib_rstatusdokumen` (`ib_dok_status_id`),
@@ -1677,7 +1996,7 @@ ALTER TABLE `ib_kursus_upload_nilai`
   ADD CONSTRAINT `ib_kursus_upload_nilai_ibfk_9` FOREIGN KEY (`v_nilek`) REFERENCES `ib_rstatusdokumen` (`ib_dok_status_id`);
 
 --
--- Constraints for table `ib_paud`
+-- Ketidakleluasaan untuk tabel `ib_paud`
 --
 ALTER TABLE `ib_paud`
   ADD CONSTRAINT `ib_paud_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
@@ -1693,15 +2012,15 @@ ALTER TABLE `ib_paud`
   ADD CONSTRAINT `ib_paud_ibfk_9` FOREIGN KEY (`ib_paud_status`) REFERENCES `ib_rstatus` (`status_id`);
 
 --
--- Constraints for table `ib_paud_upload`
+-- Ketidakleluasaan untuk tabel `ib_paud_upload`
 --
 ALTER TABLE `ib_paud_upload`
   ADD CONSTRAINT `ib_paud_upload_ibfk_1` FOREIGN KEY (`paud_id`) REFERENCES `ib_paud` (`ib_paud_id`),
-  ADD CONSTRAINT `ib_paud_upload_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `ib_paud` (`user_id`),
-  ADD CONSTRAINT `ib_paud_upload_ibfk_3` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `ib_paud_upload_ibfk_3` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `ib_paud_upload_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `ib_paud_upload_nilai`
+-- Ketidakleluasaan untuk tabel `ib_paud_upload_nilai`
 --
 ALTER TABLE `ib_paud_upload_nilai`
   ADD CONSTRAINT `ib_paud_upload_nilai_ibfk_1` FOREIGN KEY (`ib_paud_id`) REFERENCES `ib_paud` (`ib_paud_id`),
@@ -1709,31 +2028,35 @@ ALTER TABLE `ib_paud_upload_nilai`
   ADD CONSTRAINT `ib_paud_upload_nilai_ibfk_3` FOREIGN KEY (`update_by`) REFERENCES `users` (`id`);
 
 --
--- Constraints for table `ib_rstatus`
+-- Ketidakleluasaan untuk tabel `ib_rstatus`
 --
 ALTER TABLE `ib_rstatus`
   ADD CONSTRAINT `ib_rstatus_ibfk_1` FOREIGN KEY (`label_id`) REFERENCES `ib_rlabel` (`label_id`);
 
 --
--- Constraints for table `profiles`
+-- Ketidakleluasaan untuk tabel `profiles`
 --
 ALTER TABLE `profiles`
   ADD CONSTRAINT `user_profile_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `psr_rkabupaten_kota`
+-- Ketidakleluasaan untuk tabel `psr_rkabupaten_kota`
 --
 ALTER TABLE `psr_rkabupaten_kota`
   ADD CONSTRAINT `psr_rkabupaten_kota_ibfk_1` FOREIGN KEY (`psr_prop_id`) REFERENCES `psr_rpropinsi` (`psr_prop_id`);
 
 --
--- Constraints for table `psr_rpropinsi`
+-- Ketidakleluasaan untuk tabel `psr_rpropinsi`
 --
 ALTER TABLE `psr_rpropinsi`
   ADD CONSTRAINT `psr_rpropinsi_ibfk_1` FOREIGN KEY (`psr_reg_id`) REFERENCES `psr_rregional` (`psr_reg_id`);
 
 --
--- Constraints for table `rights`
+-- Ketidakleluasaan untuk tabel `rights`
 --
 ALTER TABLE `rights`
   ADD CONSTRAINT `Rights_ibfk_1` FOREIGN KEY (`itemname`) REFERENCES `authitem` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
