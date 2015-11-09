@@ -1,0 +1,44 @@
+
+#form-login-admin{
+	margin: 10px 10px;
+	width : 260px;
+	border: 1px solid;
+	border-color: #999;
+	background: #FFFFFF;
+	overflow: hidden;
+}
+
+#login-inside-left{
+	width: 350px;
+	margin-top: 5px;
+	margin-left: 10px;
+	float: left;
+	color: #FFFFFF;
+}
+
+#login-inside-left-menu{
+	width: 350px;
+	color: #FFFFFF;
+	display: inline-block;
+}
+
+
+.footer-cursor:hover{
+	opacity:0.7;
+	filter:alpha(opacity=70);	
+}
+
+#login-inside-left-menu img{
+	width: 40px;
+	height: 40px;
+	float: left;
+}
+
+#login-inside-left-menu p{
+	background: #999;
+	width: 180px;
+	height: 30px;
+	padding-top: 10px;
+	padding-left: 20px;
+	float: left;
+}
